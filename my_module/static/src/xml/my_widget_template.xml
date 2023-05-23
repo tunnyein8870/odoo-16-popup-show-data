@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="my_module.my_widget_template" owl="1">
+        <button class="btn btn-secondary bg-primary text-white" t-on-click="_onClick">Confirm</button>
+    </t>
+</templates>

@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="my_model_view_tree" model="ir.ui.view">
+            <field name="name">My Module Tree</field>
+            <field name="model">my_module.my_model</field>
+            <field name="arch" type="xml">
+                <tree string="Schools">
+                    <field name="name"/>
+                    <field name="value"/>
+                    <field name="value2"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="my_model_view_form" model="ir.ui.view">
+            <field name="name">my_module.my_model.form</field>
+            <field name="model">my_module.my_model</field>
+            <field name="arch" type="xml">
+                <form string="My Model">
+                    <group>
+                        <field name="name"/>
+                        <field name="value"/>
+                        <field name="value2"/>
+                        <field name="description"/>
+                        <!-- <field name="student_id" widget="many2one" options="{'mode': 'tree'}"/> -->
+                    </group>
+                    <group>
+                        <field name="confirm_btn" widget="my_widget"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- action school view -->
+        <record model="ir.actions.act_window" id="action_widget_view">
+            <field name="name">Widget</field>
+            <field name="res_model">my_module.my_model</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="my_model_view_tree"/>
+        </record>
+
+        <menuitem name="Widget" id="my_module.menu_root" sequence="1" action="action_widget_view"/>
+
+    </data>
+</odoo>

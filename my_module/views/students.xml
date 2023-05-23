@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <!-- Tree View -->
+        <record model="ir.ui.view" id="students_tree_view">
+            <field name="name">Student List</field>
+            <field name="model">my_module.student</field>
+            <field name="arch" type="xml">
+                <tree default_order="id desc">
+                    <header>
+                    </header>
+                    <field name="name"/>
+                    <field name="nrc"/>
+                    <field name="dob" optional="hide"/>
+                    <field name="phone" optional="hide"/>
+                    <field name="contact" optional="hide"/>
+                    <field name="gender" optional="show"/>
+                    <field name="nationality" optional="show"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- Form View -->
+        <record model="ir.ui.view" id="students_form_view">
+            <field name="name">Student Form</field>
+            <field name="model">my_module.student</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="nrc"/>
+                            <field name="dob"/>
+                            <field name="phone"/>
+                            <field name="contact"/>
+                        </group>
+                        <group>
+                            <field name="gender" widget="radio" options="{'horizontal': True}"/>
+                            <field name="nationality"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_student_tree_view">
+            <field name="name">Student List</field>
+            <field name="res_model">my_module.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="students_tree_view"/>
+
+        </record>
+
+
+        <!-- create action for new record -->
+        <!-- when 'Create Action Menu Item is clicked, a new form will be opened.' -->
+        <record model="ir.actions.act_window" id="action_student_form_view">
+            <field name="name">Create New Student</field>
+            <field name="res_model">my_module.student</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="students_form_view"/>
+        </record>
+
+        <menuitem name="Students" id="my_module.menu_1" parent="my_module.menu_root" action="action_student_tree_view"/>
+
+    </data>
+</odoo>
